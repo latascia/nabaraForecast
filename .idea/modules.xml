@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nabaraForecast.iml" filepath="$PROJECT_DIR$/.idea/modules/nabaraForecast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nabaraForecast_main.iml" filepath="$PROJECT_DIR$/.idea/modules/nabaraForecast_main.iml" group="nabaraForecast" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nabaraForecast_test.iml" filepath="$PROJECT_DIR$/.idea/modules/nabaraForecast_test.iml" group="nabaraForecast" />
+    </modules>
+  </component>
+</project>
