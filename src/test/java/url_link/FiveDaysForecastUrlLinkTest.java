@@ -23,20 +23,8 @@ public class FiveDaysForecastUrlLinkTest {
     }
 
     @Test
-    public void testCreateUrlID() {
-        assertEquals("api.openweathermap.org/data/2.5/forecast?id=1567&appid=e8f64f746b108351d35e396af44d3ae0",
-                UrlLinkGenerator.generateUrlByCityID(RequestType.FORECAST, 1567));
-    }
-
-    @Test
     public void testCreateUrlLatitudeLongitude() {
         assertEquals("api.openweathermap.org/data/2.5/forecast?lat=156&lon=120&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.FORECAST, 156, 120));
-    }
-
-    @Test
-    public void testCreateUrlZipCode() {
-        assertEquals("api.openweathermap.org/data/2.5/forecast?zip=94040,us&appid=e8f64f746b108351d35e396af44d3ae0",
-                UrlLinkGenerator.generateUrlByZipCode(RequestType.FORECAST, 94040, "us"));
     }
 }

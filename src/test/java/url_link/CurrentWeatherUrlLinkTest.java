@@ -10,7 +10,6 @@ import static org.junit.Assert.assertNull;
  */
 
 public class CurrentWeatherUrlLinkTest {
-
     @Test
     public void testCreateUrlNullCityName() {
         assertNull(UrlLinkGenerator.generateUrlByCityName(RequestType.CURRENT_WEATHER, null));
@@ -97,25 +96,6 @@ public class CurrentWeatherUrlLinkTest {
         assertEquals(false, UrlLinkGenerator.isCountryCodeValid("rar"));
         assertEquals(false, UrlLinkGenerator.isCountryCodeValid("015875"));
     }
-
-    @Test
-    public void testCreateUrlZeroID() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?id=0&appid=e8f64f746b108351d35e396af44d3ae0",
-                UrlLinkGenerator.generateUrlByCityID(RequestType.CURRENT_WEATHER, 0));
-    }
-
-    @Test
-    public void testCreateUrlPositiveID() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?id=1567&appid=e8f64f746b108351d35e396af44d3ae0",
-                UrlLinkGenerator.generateUrlByCityID(RequestType.CURRENT_WEATHER, 1567));
-    }
-
-    @Test
-    public void testCreateUrlNegativeID() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?id=-1567&appid=e8f64f746b108351d35e396af44d3ae0",
-                UrlLinkGenerator.generateUrlByCityID(RequestType.CURRENT_WEATHER, -1567));
-    }
-
     @Test
     public void testCreateUrlNegativeLatitudeNegativeLongitude() {
         assertEquals("api.openweathermap.org/data/2.5/weather?lat=-156&lon=-120&appid=e8f64f746b108351d35e396af44d3ae0",
@@ -158,11 +138,5 @@ public class CurrentWeatherUrlLinkTest {
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, 120, 0));
         assertEquals("api.openweathermap.org/data/2.5/weather?lat=0&lon=0&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, 0, 0));
-    }
-
-    @Test
-    public void testCreateUrlZipCode() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?zip=94040,us&appid=e8f64f746b108351d35e396af44d3ae0",
-                UrlLinkGenerator.generateUrlByZipCode(RequestType.CURRENT_WEATHER, 94040, "us"));
     }
 }
