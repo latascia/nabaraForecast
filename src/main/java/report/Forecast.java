@@ -1,6 +1,5 @@
 package report;
 
-import java.util.regex.Pattern;
 
 /**
  * Created by Nata on 27.09.17.

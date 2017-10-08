@@ -18,8 +18,8 @@ public class FiveDaysForecastUrlLinkTest {
 
     @Test
     public void testCreateUrlNameCode(){
-        assertEquals("api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=e8f64f746b108351d35e396af44d3ae0",
-                UrlLinkGenerator.generateUrlByCityNameAndCountryCode(RequestType.FORECAST, "London", "uk"));
+        assertEquals("api.openweathermap.org/data/2.5/forecast?q=Tallinn,ee&appid=e8f64f746b108351d35e396af44d3ae0",
+                UrlLinkGenerator.generateUrlByCityNameAndCountryCode(RequestType.FORECAST, "Tallinn", "ee"));
     }
 
     @Test
