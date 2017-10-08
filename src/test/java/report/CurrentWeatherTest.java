@@ -56,10 +56,10 @@ public class CurrentWeatherTest {
 
     @Test
     public void testIfGivenLatitudeEqualsGotLatitude() {
-        String latitude = "123.00";
+        String latitude = "123";
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates(latitude, "yyy.yy");
-        assertEquals("123.00:yyy.yy", report.getCoordinates());
+        report.setCoordinates(latitude, "yyy");
+        assertEquals("123:yyy", report.getCoordinates());
     }
 
     @Test
@@ -67,15 +67,15 @@ public class CurrentWeatherTest {
         String latitude = "23.00";
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates(latitude, "yyy.yy");
-        assertEquals("023.00:yyy.yy", report.getCoordinates());
+        assertEquals("023:yyy", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLatitudeIsOneNumber() {
-        String latitude = "3.00";
+        String latitude = "3";
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates(latitude, "yyy.yy");
-        assertEquals("003.00:yyy.yy", report.getCoordinates());
+        assertEquals("003:yyy", report.getCoordinates());
     }
 
     @Test
@@ -83,7 +83,7 @@ public class CurrentWeatherTest {
         String longitude = "223.00";
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("xxx.xx", longitude);
-        assertEquals("xxx.xx:223.00", report.getCoordinates());
+        assertEquals("xxx:223", report.getCoordinates());
     }
 
     @Test
@@ -91,7 +91,7 @@ public class CurrentWeatherTest {
         String longitude = "23.00";
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("xxx.xx", longitude);
-        assertEquals("xxx.xx:023.00", report.getCoordinates());
+        assertEquals("xxx:023", report.getCoordinates());
     }
 
     @Test
@@ -99,16 +99,16 @@ public class CurrentWeatherTest {
         String longitude = "3.00";
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("xxx.00", longitude);
-        assertEquals("xxx.00:003.00", report.getCoordinates());
+        assertEquals("xxx:003", report.getCoordinates());
     }
 
     @Test
     public void testIfGeoFormatIsRight() {
-        String longitude = "223.00";
-        String latitude = "157.00";
+        String longitude = "223";
+        String latitude = "157";
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates(latitude, longitude);
-        assertEquals("157.00:223.00", report.getCoordinates());
+        assertEquals("157:223", report.getCoordinates());
     }
 
     @Test
@@ -116,7 +116,7 @@ public class CurrentWeatherTest {
         String longitude = "-223.00";
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("xxx.xx", longitude);
-        assertEquals("xxx.xx:-223.00", report.getCoordinates());
+        assertEquals("xxx:-223", report.getCoordinates());
     }
 
     @Test
@@ -124,7 +124,7 @@ public class CurrentWeatherTest {
         String latitude = "-223.05";
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates(latitude, "yyy.yy");
-        assertEquals("-223.05:yyy.yy", report.getCoordinates());
+        assertEquals("-223:yyy", report.getCoordinates());
     }
 
     @Test
@@ -133,35 +133,35 @@ public class CurrentWeatherTest {
         String longitude = "-145.00";
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates(latitude, longitude);
-        assertEquals("-223.00:-145.00", report.getCoordinates());
+        assertEquals("-223:-145", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLatHasMoreDecimals() {
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("123.12345", "yyy.yy");
-        assertEquals("123.12:yyy.yy", report.getCoordinates());
+        assertEquals("123:yyy", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLatitudeHasMoreDecimalsRound() {
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("123.12945", "yyy.yy");
-        assertEquals("123.13:yyy.yy", report.getCoordinates());
+        assertEquals("123:yyy", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLongitudeHasMoreDecimals() {
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("xxx.xx", "123.1235");
-        assertEquals("xxx.xx:123.12", report.getCoordinates());
+        assertEquals("xxx:123", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLongitudeHasMoreDecimalsRound() {
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("xxx.xx", "123.12945");
-        assertEquals("xxx.xx:123.13", report.getCoordinates());
+        assertEquals("xxx:123", report.getCoordinates());
     }
 
     @Test
@@ -198,7 +198,7 @@ public class CurrentWeatherTest {
     public void testIfLatitudeIsEmpty() {
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("", "yyy.yy");
-        assertEquals(":yyy.yy", report.getCoordinates());
+        assertEquals("000:yyy", report.getCoordinates());
 
     }
 
@@ -206,14 +206,14 @@ public class CurrentWeatherTest {
     public void testIfLongitudeIsEmpty() {
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("xxx.xx", "");
-        assertEquals("xxx.xx:", report.getCoordinates());
+        assertEquals("xxx:000", report.getCoordinates());
     }
 
     @Test
     public void testIfLongitudeAndLatitudeBothAreEmpty() {
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates("", "");
-        assertEquals(":", report.getCoordinates());
+        assertEquals("000:000", report.getCoordinates());
     }
 
     @Test

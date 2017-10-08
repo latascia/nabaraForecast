@@ -2,7 +2,6 @@ package request;
 
 import report.CurrentWeather;
 import report.Forecast;
-import report.Report;
 
 /**
  * Created by Nata on 27.09.17.

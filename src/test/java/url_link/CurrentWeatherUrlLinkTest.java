@@ -75,10 +75,14 @@ public class CurrentWeatherUrlLinkTest {
 
     @Test
     public void testCreateUrlNormalNameNormalCode(){
-        assertEquals("api.openweathermap.org/data/2.5/weather?q=London,uk&appid=e8f64f746b108351d35e396af44d3ae0",
-                UrlLinkGenerator.generateUrlByCityNameAndCountryCode(RequestType.CURRENT_WEATHER, "London", "uk"));
+        assertEquals("api.openweathermap.org/data/2.5/weather?q=Tallinn,ee&appid=e8f64f746b108351d35e396af44d3ae0",
+                UrlLinkGenerator.generateUrlByCityNameAndCountryCode(RequestType.CURRENT_WEATHER, "Tallinn", "ee"));
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testIsCountryCodeValidNullCountryCodeThrowsEx() {
+        UrlLinkGenerator.isCountryCodeValid(null);
+    }
     @Test
     public void testIsCorrectCountryCodeValid() {
         assertEquals(true, UrlLinkGenerator.isCountryCodeValid("FK"));
