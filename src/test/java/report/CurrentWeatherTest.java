@@ -56,165 +56,114 @@ public class CurrentWeatherTest {
 
     @Test
     public void testIfGivenLatitudeEqualsGotLatitude() {
-        String latitude = "123";
+        double latitude = 123;
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates(latitude, "yyy");
-        assertEquals("123:yyy", report.getCoordinates());
+        report.setCoordinates(latitude, 0);
+        assertEquals("123,00:000,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLatitudeIsTwoNumbers() {
-        String latitude = "23.00";
+        double latitude = 23.00;
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates(latitude, "yyy.yy");
-        assertEquals("023:yyy", report.getCoordinates());
+        report.setCoordinates(latitude, 0);
+        assertEquals("023,00:000,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLatitudeIsOneNumber() {
-        String latitude = "3";
+        double latitude = 3;
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates(latitude, "yyy.yy");
-        assertEquals("003:yyy", report.getCoordinates());
+        report.setCoordinates(latitude, 0);
+        assertEquals("003,00:000,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLongitudeEqualsGotLongitude() {
-        String longitude = "223.00";
+        double longitude = 223.00;
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("xxx.xx", longitude);
-        assertEquals("xxx:223", report.getCoordinates());
+        report.setCoordinates(0, longitude);
+        assertEquals("000,00:223,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLongitudeIsTwoNumbers() {
-        String longitude = "23.00";
+        double longitude = 23.00;
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("xxx.xx", longitude);
-        assertEquals("xxx:023", report.getCoordinates());
+        report.setCoordinates(0, longitude);
+        assertEquals("000,00:023,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLongitudeIsOneNumber() {
-        String longitude = "3.00";
+        double longitude = 3.00;
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("xxx.00", longitude);
-        assertEquals("xxx:003", report.getCoordinates());
+        report.setCoordinates(0, longitude);
+        assertEquals("000,00:003,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGeoFormatIsRight() {
-        String longitude = "223";
-        String latitude = "157";
+        double longitude = 223;
+        double latitude = 157;
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates(latitude, longitude);
-        assertEquals("157:223", report.getCoordinates());
+        assertEquals("157,00:223,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLongitudeIsNegative() {
-        String longitude = "-223.00";
+        double longitude = -223.00;
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("xxx.xx", longitude);
-        assertEquals("xxx:-223", report.getCoordinates());
+        report.setCoordinates(0, longitude);
+        assertEquals("000,00:-223,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLatitudeIsNegative() {
-        String latitude = "-223.05";
+        double latitude = -223.05;
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates(latitude, "yyy.yy");
-        assertEquals("-223:yyy", report.getCoordinates());
+        report.setCoordinates(latitude, 0);
+        assertEquals("-223,00:000,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLatAnLonBothAreNegative() {
-        String latitude = "-223.00";
-        String longitude = "-145.00";
+        double latitude = -223.00;
+        double longitude = -145.00;
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates(latitude, longitude);
-        assertEquals("-223:-145", report.getCoordinates());
+        assertEquals("-223,00:-145,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLatHasMoreDecimals() {
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("123.12345", "yyy.yy");
-        assertEquals("123:yyy", report.getCoordinates());
+        report.setCoordinates(123.12345, 0);
+        assertEquals("123,12:000,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLatitudeHasMoreDecimalsRound() {
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("123.12945", "yyy.yy");
-        assertEquals("123:yyy", report.getCoordinates());
+        report.setCoordinates(123.12945, 0);
+        assertEquals("123,13:000,00", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLongitudeHasMoreDecimals() {
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("xxx.xx", "123.1235");
-        assertEquals("xxx:123", report.getCoordinates());
+        report.setCoordinates(0, 123.1235);
+        assertEquals("000,00:123,12", report.getCoordinates());
     }
 
     @Test
     public void testIfGivenLongitudeHasMoreDecimalsRound() {
         CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("xxx.xx", "123.12945");
-        assertEquals("xxx:123", report.getCoordinates());
+        report.setCoordinates(0, 123.12945);
+        assertEquals("000,00:123,12", report.getCoordinates());
     }
 
-    @Test
-    public void testIfLatitudeIsNull() {
-        CurrentWeather report = new CurrentWeather(null, null);
-        try {
-            report.setCoordinates(null, "yyy.yy");
-        } catch (NullPointerException e) {
-            fail();
-        }
-    }
-
-    @Test
-    public void testIfLongitudeIsNull() {
-        CurrentWeather report = new CurrentWeather(null, null);
-        try {
-            report.setCoordinates("xxx.xx", null);
-        } catch (NullPointerException e) {
-            fail();
-        }
-    }
-
-    @Test
-    public void testIfLongitudeAndLatitudeBothAreNull() {
-        CurrentWeather report = new CurrentWeather(null, null);
-        try {
-            report.setCoordinates(null, null);
-        } catch (NullPointerException e) {
-            fail();
-        }
-    }
-
-    @Test
-    public void testIfLatitudeIsEmpty() {
-        CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("", "yyy.yy");
-        assertEquals("000:yyy", report.getCoordinates());
-
-    }
-
-    @Test
-    public void testIfLongitudeIsEmpty() {
-        CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("xxx.xx", "");
-        assertEquals("xxx:000", report.getCoordinates());
-    }
-
-    @Test
-    public void testIfLongitudeAndLatitudeBothAreEmpty() {
-        CurrentWeather report = new CurrentWeather(null, null);
-        report.setCoordinates("", "");
-        assertEquals("000:000", report.getCoordinates());
-    }
 
     @Test
     public void testIfGivenCurrentTempEqualsGot() {

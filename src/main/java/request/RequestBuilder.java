@@ -6,7 +6,7 @@ import report.Forecast;
 /**
  * Created by Nata on 27.09.17.
  */
-public class requestBuilder {
+public class RequestBuilder {
     public static Forecast getForecast() {
         return null;
     }

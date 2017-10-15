@@ -9,27 +9,44 @@ import report.Forecast;
  */
 public class JSONparser {
     final static int THREE_DAYS_DATA_AMOUNT = 8 * 3;
-    final static int CITY_DATA_STARTS_AT = 100;
+    final static int FOOTER = 60;
+
+    private static double findInJson(String json, String toFind) {
+        json = json.substring(toFind.length());
+        StringBuilder answer = new StringBuilder();
+        while (Character.isDigit(json.charAt(0)) || json.charAt(0) == '.' || json.charAt(0) == '-') {
+            answer.append(json.charAt(0));
+            json = json.substring(1);
+        }
+        System.out.println(answer.toString());
+        return Double.parseDouble(answer.toString());
+    }
 
     public static void parseJsonForForecast(String toParse, Forecast report) {
-        int daysDataAmount = 0;
-        String longitude = null, latitude = null;
-        double minTemperature = 0, maxTemperature = 0;
-        for (;toParse.length() > 0; toParse = toParse.substring(1)) {
-            if (toParse.startsWith("\"temp_max\":")) {
-
+        double longitude = Double.NaN, latitude = Double.NaN;
+        double minTemperature = Double.MAX_VALUE, maxTemperature = Double.MIN_VALUE;
+        for (int daysDataAmount = 0; daysDataAmount < THREE_DAYS_DATA_AMOUNT && toParse.length() > FOOTER; toParse = toParse.substring(1)) {
+            if (toParse.startsWith("\"temp_min\":")) {
+                double toCompare = findInJson(toParse, "\"temp_min\":");
+                if (toCompare < minTemperature) {
+                    minTemperature = toCompare;
+                }
+            }else if (toParse.startsWith("\"temp_max\":")) {
+                double toCompare = findInJson(toParse, "\"temp_max\":");
+                if (toCompare > maxTemperature) {
+                    maxTemperature = toCompare;
+                }
                 daysDataAmount++;
             }
-            if (daysDataAmount >=THREE_DAYS_DATA_AMOUNT) {
-                break;
-            }
         }
-        toParse = toParse.substring(toParse.length() - CITY_DATA_STARTS_AT);
+
         for (;toParse.length() > 0; toParse = toParse.substring(1)) {
             if (toParse.startsWith("\"lat\":")) {
-
+                latitude = findInJson(toParse, "\"lat\":");
+                System.out.println(latitude);
             } else if (toParse.startsWith("\"lon\":")) {
-
+                longitude = findInJson(toParse, "\"lon\":");
+                System.out.println(longitude);
             }
         }
         report.setCoordinates(latitude, longitude);
@@ -37,7 +54,7 @@ public class JSONparser {
     }
 
     public static void parseJsonForCurrentWeather(String toParse, CurrentWeather report) {
-        String longitude = null, latitude = null;
+        double longitude = Double.NaN, latitude = Double.NaN;
         double currentTemp = 0;
         for (; toParse.length() > 0; toParse = toParse.substring(1)) {
             if (toParse.startsWith("\"lon\":")) {

@@ -1,5 +1,7 @@
 package report;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.regex.Pattern;
 
 /**
@@ -25,15 +27,11 @@ public class Report {
         return cityName;
     }
 
-    public void setCoordinates(String latitude, String longitude) {
-        if (latitude == null || longitude == null) {
-            return;
-        }
-        latitude = latitude.split(Pattern.quote("."))[0];
-        longitude = longitude.split(Pattern.quote("."))[0];
-        latitude = latitude.startsWith("-") ? "-" +  ("000" + latitude).substring(latitude.length()) : ("000" + latitude).substring(latitude.length());
-        longitude = longitude.startsWith("-") ? "-" + ("000" + longitude).substring(longitude.length()) : ("000" + longitude).substring(longitude.length());
-        coordinates = String.format("%s:%s", latitude, longitude);
+    public void setCoordinates(double latitude, double longitude) {
+        NumberFormat formatter = new DecimalFormat("#000.00");
+        latitude = (Math.floor(latitude * 100)) / 100;
+        longitude = (Math.floor(longitude * 100)) / 100;
+        coordinates = String.format("%s:%s", formatter.format(latitude), formatter.format(longitude));
     }
 
     public String getCoordinates() {
