@@ -17,11 +17,11 @@ import static org.junit.Assert.fail;
 public class HttpTest {
 
     //!
-    @Test (expected = UnknownHostException.class)
+    @Test (expected = IOException.class)
     public void testConnectToWrongLink() throws IOException {
         String url = "https://wrongurl.la";
         HttpURLConnection urlConn = HttpConnection.openConnection(url);
-
+        urlConn.getResponseCode();
     }
 
     @Test

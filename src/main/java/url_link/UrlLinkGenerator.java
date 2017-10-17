@@ -26,10 +26,10 @@ public class UrlLinkGenerator {
         String url = "";
         switch (urlBeginning) {
             case CURRENT_WEATHER:
-                url = "api.openweathermap.org/data/2.5/weather?q=%s&appid=%s";
+                url = "https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s";
                 break;
             case FORECAST:
-                url = "api.openweathermap.org/data/2.5/forecast?q=%s&appid=%s";
+                url = "https://api.openweathermap.org/data/2.5/forecast?q=%s&appid=%s";
         }
         return String.format(url, cityName, API_KEY);
     }
@@ -49,10 +49,10 @@ public class UrlLinkGenerator {
         String url = "";
         switch (urlBeginning) {
             case CURRENT_WEATHER:
-                url = "api.openweathermap.org/data/2.5/weather?q=%s,%s&appid=%s";
+                url = "https://api.openweathermap.org/data/2.5/weather?q=%s,%s&appid=%s";
                 break;
             case FORECAST:
-                url = "api.openweathermap.org/data/2.5/forecast?q=%s,%s&appid=%s";
+                url = "https://api.openweathermap.org/data/2.5/forecast?q=%s,%s&appid=%s";
         }
         return String.format(url, cityName, countryCode, API_KEY);
     }
@@ -65,10 +65,11 @@ public class UrlLinkGenerator {
         String url = "";
         switch (urlBeginning) {
             case CURRENT_WEATHER:
-                url = "api.openweathermap.org/data/2.5/weather?lat=%d&lon=%d&appid=%s";
+                url = "https://api.openweathermap.org/data/2.5/weather?lat=%d&lon=%d&appid=%s";
                 break;
             case FORECAST:
-                url = "api.openweathermap.org/data/2.5/forecast?lat=%d&lon=%d&appid=%s";
+                url = "https://api.openweathermap.org/data/2.5/forecast?lat=%d&lon=%d&appid=%s";
+                break;
         }
         return String.format(url, lat, lon, API_KEY);
     }

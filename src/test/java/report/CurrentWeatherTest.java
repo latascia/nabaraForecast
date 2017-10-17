@@ -124,7 +124,7 @@ public class CurrentWeatherTest {
         double latitude = -223.05;
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates(latitude, 0);
-        assertEquals("-223,00:000,00", report.getCoordinates());
+        assertEquals("-223,05:000,00", report.getCoordinates());
     }
 
     @Test
@@ -147,7 +147,7 @@ public class CurrentWeatherTest {
     public void testIfGivenLatitudeHasMoreDecimalsRound() {
         CurrentWeather report = new CurrentWeather(null, null);
         report.setCoordinates(123.12945, 0);
-        assertEquals("123,13:000,00", report.getCoordinates());
+        assertEquals("123,12:000,00", report.getCoordinates());
     }
 
     @Test

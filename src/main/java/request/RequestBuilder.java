@@ -25,13 +25,12 @@ public class RequestBuilder {
         // sth is wrong with connection!!!!!!!!!!!!! Try to find out!!!!!!!
         try {
             HttpURLConnection con = HttpConnection.openConnection(url);
-            con.connect();
             BufferedReader stream = new BufferedReader(new InputStreamReader(con.getInputStream()));
             while (stream.ready()) {
                 contentGatherer.append(stream.readLine());
             }
         } catch (IOException e) {
-            System.out.println("Can't open connection!");
+            e.printStackTrace();
         }
         String content = contentGatherer.toString();
         if (content.equals("")) {

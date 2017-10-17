@@ -22,7 +22,7 @@ public class CurrentWeatherUrlLinkTest {
 
     @Test
     public void testCreateUrlNormalName() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?q=London&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?q=London&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByCityName(RequestType.CURRENT_WEATHER, "London"));
     }
 
@@ -37,7 +37,7 @@ public class CurrentWeatherUrlLinkTest {
 
     @Test
     public void testCreateUrlNormalNameNullCode(){
-        assertEquals("api.openweathermap.org/data/2.5/weather?q=London&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?q=London&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByCityNameAndCountryCode(RequestType.CURRENT_WEATHER, "London", null));
     }
 
@@ -58,7 +58,7 @@ public class CurrentWeatherUrlLinkTest {
 
     @Test
     public void testCreateUrlNormalNameEmptyCode(){
-        assertEquals("api.openweathermap.org/data/2.5/weather?q=London&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?q=London&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByCityNameAndCountryCode(RequestType.CURRENT_WEATHER, "London", ""));
     }
 
@@ -69,13 +69,13 @@ public class CurrentWeatherUrlLinkTest {
 
     @Test
     public void testCreateUrlNormalNameInvalidCode(){
-        assertEquals("api.openweathermap.org/data/2.5/weather?q=London&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?q=London&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByCityNameAndCountryCode(RequestType.CURRENT_WEATHER, "London", "bla"));
     }
 
     @Test
     public void testCreateUrlNormalNameNormalCode(){
-        assertEquals("api.openweathermap.org/data/2.5/weather?q=Tallinn,ee&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?q=Tallinn,ee&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByCityNameAndCountryCode(RequestType.CURRENT_WEATHER, "Tallinn", "ee"));
     }
 
@@ -102,45 +102,45 @@ public class CurrentWeatherUrlLinkTest {
     }
     @Test
     public void testCreateUrlNegativeLatitudeNegativeLongitude() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?lat=-156&lon=-120&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?lat=-156&lon=-120&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, -156, -120));
     }
 
     @Test
     public void testCreateUrlPositiveLatitudePositiveLongitude() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?lat=156&lon=120&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?lat=156&lon=120&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, 156, 120));
     }
 
     @Test
     public void testCreateUrlShortLatitudeLongitude() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?lat=1&lon=120&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?lat=1&lon=120&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, 1, 120));
-        assertEquals("api.openweathermap.org/data/2.5/weather?lat=1&lon=1&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?lat=1&lon=1&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, 1, 1));
-        assertEquals("api.openweathermap.org/data/2.5/weather?lat=120&lon=1&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?lat=120&lon=1&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, 120, 1));
     }
 
     @Test
     public void testCreateUrlNegativeLatitudePositiveLongitude() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?lat=-100&lon=200&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?lat=-100&lon=200&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, -100, 200));
     }
 
     @Test
     public void testCreateUrlPositiveLatitudeNegativeLongitude() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?lat=100&lon=-120&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?lat=100&lon=-120&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, 100, -120));
     }
 
     @Test
     public void testCreateUrlZeroLatitudeZeroLongitude() {
-        assertEquals("api.openweathermap.org/data/2.5/weather?lat=0&lon=120&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?lat=0&lon=120&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, 0, 120));
-        assertEquals("api.openweathermap.org/data/2.5/weather?lat=120&lon=0&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?lat=120&lon=0&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, 120, 0));
-        assertEquals("api.openweathermap.org/data/2.5/weather?lat=0&lon=0&appid=e8f64f746b108351d35e396af44d3ae0",
+        assertEquals("https://api.openweathermap.org/data/2.5/weather?lat=0&lon=0&appid=e8f64f746b108351d35e396af44d3ae0",
                 UrlLinkGenerator.generateUrlByGeoCoordinates(RequestType.CURRENT_WEATHER, 0, 0));
     }
 }
