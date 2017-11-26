@@ -7,10 +7,10 @@ import java.util.HashMap;
  */
 public class ForecastDataStorage extends DataStorage {
 
-    private HashMap<String, WeatherInfo>[] list;
+    private HashMap<String, Object>[] list;
     private HashMap<String, Object> city;
 
-    public HashMap<String, WeatherInfo>[] getList() {
+    public HashMap<String, Object>[] getList() {
         return list;
     }
 
