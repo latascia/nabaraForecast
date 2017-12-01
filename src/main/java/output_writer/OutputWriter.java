@@ -1,10 +1,26 @@
 package output_writer;
 
-/**
- * Created by Nata on 05.11.17.
- */
-public class OutputWriter {
-    public void writeReportToFile() {
 
+import com.google.gson.Gson;
+import report.Report;
+import request.Request;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class OutputWriter {
+
+
+    void writeToFile(String path, String content){
+        try {
+            BufferedWriter writer = null;
+            writer = new BufferedWriter(new FileWriter(path));
+            writer.append(content);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 }

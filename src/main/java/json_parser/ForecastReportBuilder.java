@@ -1,32 +1,24 @@
 package json_parser;
 
 import com.google.gson.internal.LinkedTreeMap;
-import data_storage.ForecastDataStorage;
-import report.ForecastReport;
+import raw_data_storage.ForecastDataStorage;
+import report.FinalReport;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-/**
- * Created by Nata on 02.11.17.
- */
-public class ForecastReportBuilder extends ReportFromStorageBuilder {
+
+public class ForecastReportBuilder {
+    private FinalReport report;
     private ForecastDataStorage storage;
 
     double min_temp = Double.MAX_VALUE;
     double max_temp = -Double.MAX_VALUE;
 
-    public ForecastReportBuilder(ForecastDataStorage storage) {
-        super(storage);
+    public ForecastReportBuilder(ForecastDataStorage storage, FinalReport report) {
         this.storage = storage;
-    }
-
-    private void setName() {
-        storage.setName(storage.getCity().get("name").toString());
-    }
-    private void setCoordinates() {
-        storage.setCoord((LinkedTreeMap<String, Float>) storage.getCity().get("coord"));
+        this.report = report;
     }
 
     private int countNeededValuesAmount(LocalDateTime time) {
@@ -55,14 +47,9 @@ public class ForecastReportBuilder extends ReportFromStorageBuilder {
         }
     }
 
-    public ForecastReport getForecastReport() {
+    public void addForecast() {
         findTemperatureExtremums();
-        setName();
-        setCoordinates();
-        ForecastReport report = new ForecastReport(super.getCityName(), super.getCode());
-        report.coordinates = super.getCoordinates();
         report.maxTemperatureInKelvin = max_temp;
         report.minTemperatureInKelvin = min_temp;
-        return report;
     }
 }

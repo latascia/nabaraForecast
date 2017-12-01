@@ -1,27 +1,24 @@
 package json_parser;
 
-import data_storage.CurrentWeatherDataStorage;
-import report.CurrentWeatherReport;
+import raw_data_storage.CurrentWeatherDataStorage;
+import report.FinalReport;
 
-/**
- * Created by Nata on 02.11.17.
- */
-public class CurrentWeatherReportBuilder extends ReportFromStorageBuilder {
 
+public class CurrentWeatherReportBuilder  {
+
+    private final FinalReport report;
     private CurrentWeatherDataStorage storage;
 
-    public CurrentWeatherReportBuilder(CurrentWeatherDataStorage storage) {
-        super(storage);
+    public CurrentWeatherReportBuilder(CurrentWeatherDataStorage storage, FinalReport report) {
+        this.report = report;
         this.storage = storage;
     }
 
     private double getCurrentTemperature() {
         return Double.parseDouble(storage.getMain().get("temp").toString());
     }
-    public CurrentWeatherReport getCurrentWeatherReport() {
-        CurrentWeatherReport report = new CurrentWeatherReport(super.getCityName(), super.getCode());
-        report.coordinates = super.getCoordinates();
+
+    public void addCurrentWeather() {
         report.currentTemperature = getCurrentTemperature();
-        return report;
     }
 }

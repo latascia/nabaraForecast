@@ -1,17 +1,10 @@
-import request.CurrentWeatherRequestAnswerGetter;
-import request.ForecastRequestAnswerGetter;
+import console_input_runner.ConsoleInputGetter;
+import raw_data_storage.CurrentWeatherStorageGetter;
+import raw_data_storage.ForecastStorageGetter;
+import request.Request;
 
-/**
- * Created by Nata on 28.09.17.
- */
 public class Main {
-    public static void main(String[] args) {
-        CurrentWeatherRequestAnswerGetter curRequest = new CurrentWeatherRequestAnswerGetter("Tallinn", "EE");
-        curRequest.getCurrentWeather();
-        curRequest.printOutGotInformation();
-        ForecastRequestAnswerGetter forRequest = new ForecastRequestAnswerGetter("Tallinn", "EE");
-        forRequest.getForecast();
-        forRequest.printOutGotInformation();
+       public static void main(String[] args) {
     }
 
 }

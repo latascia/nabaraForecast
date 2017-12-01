@@ -1,6 +1,6 @@
 package json_parser;
 
-import data_storage.ForecastDataStorage;
+import raw_data_storage.ForecastDataStorage;
 import org.junit.Before;
 import org.junit.Test;
 
