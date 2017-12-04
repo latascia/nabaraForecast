@@ -21,6 +21,11 @@ public class HttpUtility {
     public void openConnection(String url) throws IOException {
         connection = (HttpURLConnection) (new URL(url).openConnection());
     }
+
+    HttpURLConnection getConnection() {
+        return connection;
+    }
+
     public String getPageContent() throws CannotReadContentException {
         StringBuilder contentGatherer = new StringBuilder();
         try {

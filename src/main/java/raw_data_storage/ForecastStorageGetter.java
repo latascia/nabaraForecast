@@ -1,6 +1,7 @@
 package raw_data_storage;
 
 import exceptions.CannotReadContentException;
+import http_connection.HttpUtility;
 import http_connection.RequestType;
 import json_parser.JSONParser;
 import request.Request;

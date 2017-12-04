@@ -3,6 +3,7 @@ package json_parser;
 import raw_data_storage.ForecastDataStorage;
 import org.junit.Before;
 import org.junit.Test;
+import report.FinalReport;
 
 import static org.mockito.Mockito.mock;
 
@@ -10,13 +11,11 @@ import static org.mockito.Mockito.mock;
  * Created by Nata on 17.11.17.
  */
 public class TemperatureChangeTest {
-    private ForecastDataStorage storage;
     private ForecastReportBuilder parser;
 
     @Before
     public void prepareObjects() {
-        storage = mock(ForecastDataStorage.class);
-        parser = new ForecastReportBuilder(storage);
+        parser = new ForecastReportBuilder(new ForecastDataStorage(), new FinalReport());
     }
 
     @Test

@@ -20,18 +20,18 @@ public class StoragesToReportCombiner {
         this.currentWeather = currentWeather;
     }
 
-    private void cheIfMessageReceived() throws CannotReadContentException {
-        if (forecast.failedToReceive | forecast.failedToReceive) {
+    void cheIfMessageReceived() throws CannotReadContentException {
+        if (forecast.isFailedToReceive() | currentWeather.isFailedToReceive()) {
             throw new CannotReadContentException();
         }
     }
-    private void checkIfCombinationIsValid() throws ReportsDoNotMatchException {
+    void checkIfCombinationIsValid() throws ReportsDoNotMatchException {
         if(!forecast.getCityName().equals(currentWeather.getCityName())) {
             throw new ReportsDoNotMatchException();
         }
     }
 
-    private String formatCoordinates() {
+    String formatCoordinates() {
         return String.format("%.2f:%.2f", forecast.getCoord().get("lat"), forecast.getCoord().get("lon"));
     }
 
@@ -49,11 +49,6 @@ public class StoragesToReportCombiner {
         report.cityName = forecast.getCityName();
         report.coordinates = formatCoordinates();
         addWeatherInfo();
-
-        // TODO: write current and forecast data to report, using ReportBuilder class (mb 1, what uses 2).
-        //       clean RequestHandlers
-        //       write to json
-        //       read all requests
 
         return report;
     }

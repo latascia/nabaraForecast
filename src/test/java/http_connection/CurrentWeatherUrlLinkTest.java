@@ -1,7 +1,5 @@
-package http;
+package http_connection;
 
-import http_connection.RequestType;
-import http_connection.UrlLinkGenerator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

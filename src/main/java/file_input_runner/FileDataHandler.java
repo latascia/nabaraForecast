@@ -2,47 +2,36 @@ package file_input_runner;
 
 import exceptions.FailedToReceiveReportException;
 import output_writer.OutputHandler;
+import output_writer.OutputWriter;
 import report.FailReport;
 import report.Report;
+import request.ReportGetter;
 import request.Request;
 import request.RequestHandler;
 import request.RequestList;
 
 import java.io.FileNotFoundException;
 
-/**
- * Created by Nata on 01.12.17.
- */
-public class FileDataHandler {
 
-    private static Report getReport(Request request) {
-        try {
-            RequestHandler handler = new RequestHandler(request);
-            return  handler.getReport();
-        } catch (FailedToReceiveReportException e) {
-            return new FailReport();
-        }
-    }
+class FileDataHandler {
 
-    private static void writeReport(Request request) {
-        Report report = getReport(request);
+    private void writeReport(Request request) {
+        ReportGetter reporter = new ReportGetter(new RequestHandler(request));
+        Report report = reporter.getReport();
         OutputHandler output = new OutputHandler(report, request);
-        output.runWriter();
+        output.runWriter(new OutputWriter());
     }
 
-    public static void main(String[] args) {
+    void run(FileInputGetter inputGetter) {
         try {
-            FileInputGetter inputGetter = new FileInputGetter();
             RequestList list = inputGetter.getRequestFromFile();
-            System.out.println("was");
             for (Request request : list.requests) {
-                System.out.println("here");
                 writeReport(request);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("nowGotThere");
             OutputHandler outputHandler = new OutputHandler(new FailReport(), "general");
-            outputHandler.runWriter();
+            outputHandler.runWriter(new OutputWriter());
         }
     }
+
 }

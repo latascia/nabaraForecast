@@ -21,12 +21,11 @@ public class OutputHandler {
         this.fileId = id;
     }
 
-    private String getPath() {
+    String getPath() {
         final String PATH_PATTERN = "output_%s.txt";
         return String.format(PATH_PATTERN, fileId);
     }
-    public void runWriter() {
-        OutputWriter writer = new OutputWriter();
+    public void runWriter(OutputWriter writer) {
         writer.writeToFile(getPath(), getJSON());
     }
     private String getJSON() {

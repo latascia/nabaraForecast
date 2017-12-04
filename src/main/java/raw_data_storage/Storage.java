@@ -5,4 +5,8 @@ package raw_data_storage;
  */
 public class Storage {
     public boolean failedToReceive = false;
+
+    public boolean isFailedToReceive() {
+        return failedToReceive;
+    }
 }

@@ -4,7 +4,7 @@ import request.Request;
 
 import java.util.Scanner;
 
-public class ConsoleInputGetter {
+class ConsoleInputGetter {
 
     private Scanner scanner = new Scanner(System.in);
 
@@ -13,7 +13,7 @@ public class ConsoleInputGetter {
         return scanner.nextLine();
     }
 
-    public Request getRequestFromConsole() {
+    Request getRequestFromConsole() {
         return new Request(getData("city name"), getData("country code"));
     }
 

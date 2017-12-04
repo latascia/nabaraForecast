@@ -1,32 +1,29 @@
 package console_input_runner;
 
-import exceptions.FailedToReceiveReportException;
-import exceptions.ReportsDoNotMatchException;
+
 import output_writer.OutputHandler;
-import report.FailReport;
+import output_writer.OutputWriter;
 import report.Report;
+import request.ReportGetter;
 import request.Request;
 import request.RequestHandler;
 
 
-public class ConsoleDataHandler {
+class ConsoleDataHandler {
 
-    private static Request request;
+    private ConsoleInputGetter inputGetter;
 
-    private static Report getReport() {
-        try {
-            RequestHandler handler = new RequestHandler(request);
-            return  handler.getReport();
-        } catch (FailedToReceiveReportException e) {
-            return new FailReport();
-        }
+    ConsoleDataHandler(ConsoleInputGetter inputGetter) {
+        this.inputGetter = inputGetter;
+        runHandler();
     }
 
-    public static void main(String[] args) {
-        ConsoleInputGetter inputGetter = new ConsoleInputGetter();
-        request = inputGetter.getRequestFromConsole();
-        Report report = getReport();
+
+    private void runHandler() {
+        Request request = inputGetter.getRequestFromConsole();
+        ReportGetter reporter = new ReportGetter(new RequestHandler(request));
+        Report report = reporter.getReport();
         OutputHandler output = new OutputHandler(report, request);
-        output.runWriter();
+        output.runWriter(new OutputWriter());
     }
 }

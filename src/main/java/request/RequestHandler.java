@@ -13,8 +13,7 @@ import report.StoragesToReportCombiner;
 public class RequestHandler {
     private final Request request;
 
-    // StorageGetters give storages -> combiner combines, gives report
-    // TODO: 1. delete useless reports; 2. write to file; 3. read file.
+
     public RequestHandler(Request request) {
         this.request = request;
     }

@@ -7,10 +7,10 @@ public class FinalReport implements Report{
     @SerializedName("city")
     public String cityName;
     public String coordinates;
-    @SerializedName("minimum temperature")
+    @SerializedName("min_temp")
     public double minTemperatureInKelvin;
-    @SerializedName("maximum temperature")
+    @SerializedName("max_temp")
     public double maxTemperatureInKelvin;
-    @SerializedName("current temperature")
+    @SerializedName("cur_temp")
     public double currentTemperature;
 }

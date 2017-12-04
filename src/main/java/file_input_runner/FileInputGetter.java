@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 
 class FileInputGetter {
 
-    public RequestList getRequestFromFile() throws FileNotFoundException {
+    RequestList getRequestFromFile() throws FileNotFoundException {
         FileReader reader = new FileReader();
         String input = reader.getInputFromFile();
         Gson gson = new Gson();

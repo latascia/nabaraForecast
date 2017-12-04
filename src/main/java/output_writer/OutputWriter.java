@@ -14,8 +14,7 @@ public class OutputWriter {
 
     void writeToFile(String path, String content){
         try {
-            BufferedWriter writer = null;
-            writer = new BufferedWriter(new FileWriter(path));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
             writer.append(content);
             writer.close();
         } catch (IOException e) {
