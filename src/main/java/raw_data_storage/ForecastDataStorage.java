@@ -9,11 +9,10 @@ import java.util.HashMap;
  */
 public class ForecastDataStorage extends Storage {
 
-
-    private HashMap<String, Object>[] list;
+    private Prediction[] list;
     private City city;
 
-    public HashMap<String, Object>[] getList() {
+    public Prediction[] getList() {
         return list;
     }
 

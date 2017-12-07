@@ -28,10 +28,10 @@ public class ForecastReportBuilder {
     }
 
     private void findTemperatureExtremums() {
-        LocalDateTime time = LocalDateTime.parse(storage.getList()[0].get("dt_txt").toString(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        LocalDateTime time = LocalDateTime.parse(storage.getList()[0].getDateTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         for (int i = 0; i < countNeededValuesAmount(time); i++) {
-            changeMinimum(((LinkedTreeMap<String, Double>) storage.getList()[i].get("main")).get("temp_min"));
-            changeMaximum(((LinkedTreeMap<String, Double>) storage.getList()[i].get("main")).get("temp_max"));
+            changeMinimum(storage.getList()[i].getMain().get("temp_min"));
+            changeMaximum(storage.getList()[i].getMain().get("temp_max"));
         }
     }
 
