@@ -14,7 +14,7 @@ public class CurrentWeatherReportBuilder  {
         this.storage = storage;
     }
 
-    private double getCurrentTemperature() {
+    double getCurrentTemperature() {
         return Double.parseDouble(storage.getMain().get("temp").toString());
     }
 

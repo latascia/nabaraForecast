@@ -21,7 +21,7 @@ public class ForecastReportBuilder {
         this.report = report;
     }
 
-    private int countNeededValuesAmount(LocalDateTime time) {
+    int countNeededValuesAmount(LocalDateTime time) {
         final int HOURS_IN_DAY = 24;
         final int INTERVAL_BETWEEN_VALUES  = 3;
         return (HOURS_IN_DAY - time.getHour() - 1) / INTERVAL_BETWEEN_VALUES + 2 * (HOURS_IN_DAY / INTERVAL_BETWEEN_VALUES);

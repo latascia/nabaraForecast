@@ -20,7 +20,7 @@ public class StoragesToReportCombiner {
         this.currentWeather = currentWeather;
     }
 
-    void cheIfMessageReceived() throws CannotReadContentException {
+    void checkIfMessageReceived() throws CannotReadContentException {
         if (forecast.isFailedToReceive() | currentWeather.isFailedToReceive()) {
             throw new CannotReadContentException();
         }
@@ -43,7 +43,7 @@ public class StoragesToReportCombiner {
     }
 
     public FinalReport getReport() throws FailedToReceiveReportException {
-        cheIfMessageReceived();
+        checkIfMessageReceived();
         checkIfCombinationIsValid();
 
         report.cityName = forecast.getCityName();

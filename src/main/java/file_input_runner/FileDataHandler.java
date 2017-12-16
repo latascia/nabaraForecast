@@ -11,6 +11,7 @@ import request.RequestHandler;
 import request.RequestList;
 
 import java.io.FileNotFoundException;
+import java.util.Optional;
 
 
 class FileDataHandler {
@@ -24,11 +25,13 @@ class FileDataHandler {
 
     void run(FileInputGetter inputGetter) {
         try {
-            RequestList list = inputGetter.getRequestFromFile();
-            for (Request request : list.requests) {
-                writeReport(request);
+            Optional<RequestList> list = inputGetter.getRequestFromFile();
+            if (list.isPresent()) {
+                for (Request request : list.get().requests) {
+                    writeReport(request);
+                }
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | NullPointerException e) {
             OutputHandler outputHandler = new OutputHandler(new FailReport(), "general");
             outputHandler.runWriter(new OutputWriter());
         }

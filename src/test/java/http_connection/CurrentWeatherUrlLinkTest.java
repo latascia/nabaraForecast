@@ -5,9 +5,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-/**
- * Created by Nata on 24.09.17.
- */
 
 public class CurrentWeatherUrlLinkTest {
     @Test

@@ -11,19 +11,17 @@ import static org.mockito.Mockito.when;
 
 public class ConsoleInputHandlerTest {
     private ConsoleInputGetter inputReader;
-    private ConsoleDataHandler handler;
 
     @Before
     public void createHandler() {
         inputReader = mock(ConsoleInputGetter.class);
-        Request damnRequest = new Request("test", "test");
-        when(inputReader.getRequestFromConsole()).thenReturn(damnRequest);
-        ConsoleDataHandler handler = new ConsoleDataHandler(inputReader);
-
-    }
+        }
 
     @Test
     public void testIfHandlerAsksInputGetterForRequest() {
+        Request damnRequest = new Request("test", "test");
+        when(inputReader.getRequestFromConsole()).thenReturn(damnRequest);
+        ConsoleDataHandler handler = new ConsoleDataHandler(inputReader);
         verify(inputReader).getRequestFromConsole();
     }
 

@@ -1,18 +1,13 @@
 package raw_data_storage;
 
-import report.StoragesToReportCombiner;
-
 import java.util.HashMap;
 
-/**
- * Created by Nata on 31.10.17.
- */
 public class ForecastDataStorage extends Storage {
 
-    private Prediction[] list;
+    private WeatherPrediction[] list;
     private City city;
 
-    public Prediction[] getList() {
+    public WeatherPrediction[] getList() {
         return list;
     }
 

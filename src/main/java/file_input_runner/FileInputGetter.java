@@ -5,14 +5,20 @@ import request.Request;
 import request.RequestList;
 
 import java.io.FileNotFoundException;
+import java.util.Optional;
 
 
 class FileInputGetter {
 
-    RequestList getRequestFromFile() throws FileNotFoundException {
-        FileReader reader = new FileReader();
+    private final FileReader reader;
+
+    FileInputGetter(FileReader reader) {
+        this.reader = reader;
+    }
+
+    Optional<RequestList> getRequestFromFile() throws FileNotFoundException {
         String input = reader.getInputFromFile();
         Gson gson = new Gson();
-        return gson.fromJson(input, RequestList.class);
+        return Optional.ofNullable(gson.fromJson(input, RequestList.class));
     }
 }

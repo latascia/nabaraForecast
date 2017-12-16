@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class FinalReport implements Report{
     @SerializedName("city")
-    public String cityName;
-    public String coordinates;
+    String cityName;
+    String coordinates;
     @SerializedName("min_temp")
     public double minTemperatureInKelvin;
     @SerializedName("max_temp")

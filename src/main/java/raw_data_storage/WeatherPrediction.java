@@ -5,10 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 
-/**
- * Created by Nata on 07.12.17.
- */
-public class Prediction {
+
+public class WeatherPrediction {
     private HashMap<String, Float>  main;
     @SerializedName("dt_txt")
     private String dateTime;

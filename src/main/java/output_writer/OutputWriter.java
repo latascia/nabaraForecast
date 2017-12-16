@@ -1,10 +1,6 @@
 package output_writer;
 
 
-import com.google.gson.Gson;
-import report.Report;
-import request.Request;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;

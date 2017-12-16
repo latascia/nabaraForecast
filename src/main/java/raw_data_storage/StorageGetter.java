@@ -16,7 +16,6 @@ class StorageGetter {
         this.request = request;
     }
 
-    //test
     void openConnection(RequestType type) throws IOException {
         String url = UrlLinkGenerator.generateUrlByCityNameAndCountryCode(type, request.getCityName(), request.getCountryCode());
         connection = new HttpUtility(url);
