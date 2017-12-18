@@ -8,6 +8,7 @@ import report.FinalReport;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
 
@@ -23,47 +24,47 @@ public class ForecastReportBuilderTest {
     public void testIfTempMaxChangesNegativeToPositive() {
         parser.max_temp = -2;
         parser.changeMaximum(1);
-        assert(parser.max_temp == 1);
+        assertEquals(1, parser.max_temp, 0.01);
     }
 
     @Test
     public void testIfTempMaxChangesAfterComaDifference() {
         parser.max_temp = -1.15;
         parser.changeMaximum(-1.12);
-        assert(parser.max_temp == -1.12);
+        assertEquals(-1.12, parser.max_temp, 0.01);
     }
 
     @Test
     public void testIfTempMaxChangesFirstResultNegative() {
         parser.changeMaximum(-1);
-        assert(parser.max_temp == -1);
+        assertEquals(-1, parser.max_temp,0.01);
     }
 
     @Test
     public void testIfTempMinChangesPositiveToNegative() {
         parser.min_temp = 10;
         parser.changeMinimum(-1);
-        assert(parser.min_temp == -1);
+        assertEquals(-1, parser.min_temp, 0.01);
     }
 
     @Test
     public void testIfTempMinChangesAfterComaDifference() {
         parser.min_temp = 10.01;
         parser.changeMinimum(10);
-        assert(parser.min_temp == 10);
+        assertEquals(10, parser.min_temp, 0.01);
     }
 
     @Test
     public void testIfTempMinChangesFirstValuePositive() {
         parser.changeMinimum(1);
-        assert(parser.min_temp == 1);
+        assertEquals(1, parser.min_temp, 0.01);
     }
 
     @Test
     public void testIfCountsRightValuesAmountWithMidnight() {
         LocalDateTime time = LocalDateTime.parse("2017-12-16 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         int amount = parser.countNeededValuesAmount(time);
-        assert(23 == amount);
+        assertEquals(23, amount);
     }
 
     @Test
@@ -77,14 +78,14 @@ public class ForecastReportBuilderTest {
     public void testIfCountsRightValuesAmountInEvening() {
         LocalDateTime time = LocalDateTime.parse("2017-12-16 23:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         int amount = parser.countNeededValuesAmount(time);
-        assert(16 == amount);
+        assertEquals(16, amount);
     }
 
     @Test
     public void testIfCountsRightValuesAmountTwoPM() {
         LocalDateTime time = LocalDateTime.parse("2017-12-16 14:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         int amount = parser.countNeededValuesAmount(time);
-        assert(19 == amount);
+        assertEquals(19, amount);
     }
 
 }

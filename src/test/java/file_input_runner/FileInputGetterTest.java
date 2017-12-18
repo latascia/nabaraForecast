@@ -9,6 +9,9 @@ import request.RequestList;
 import java.io.FileNotFoundException;
 import java.util.Optional;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -37,7 +40,7 @@ public class FileInputGetterTest {
         try {
             when(reader.getInputFromFile()).thenReturn("");
             Optional<RequestList> requests = getter.getRequestFromFile();
-            assert(!requests.isPresent());
+            assertFalse(requests.isPresent());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -48,8 +51,8 @@ public class FileInputGetterTest {
         try {
             when(reader.getInputFromFile()).thenReturn("{\"requests\":[{\"cityName\":\"Tokyo\",\"countryCode\":\"JP\"}]}");
             Optional<RequestList> requests = getter.getRequestFromFile();
-            assert(requests.isPresent());
-            assert(1 == requests.get().requests.length);
+            assertTrue(requests.isPresent());
+            assertEquals(1, requests.get().requests.length);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
