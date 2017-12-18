@@ -9,9 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
-/**
- * Created by Nata on 19.09.17.
- */
+
 public class HttpTest {
 
     @Test(expected = IOException.class)

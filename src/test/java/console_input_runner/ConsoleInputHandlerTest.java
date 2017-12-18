@@ -21,7 +21,8 @@ public class ConsoleInputHandlerTest {
     public void testIfHandlerAsksInputGetterForRequest() {
         Request damnRequest = new Request("test", "test");
         when(inputReader.getRequestFromConsole()).thenReturn(damnRequest);
-        ConsoleDataHandler handler = new ConsoleDataHandler(inputReader);
+        ConsoleDataHandler
+                handler = new ConsoleDataHandler(inputReader);
         verify(inputReader).getRequestFromConsole();
     }
 

@@ -71,7 +71,7 @@ public class ForecastReportBuilderTest {
     public void testIfCountsRightValuesAmountOneAM() {
         LocalDateTime time = LocalDateTime.parse("2017-12-16 01:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         int amount = parser.countNeededValuesAmount(time);
-        assert(23 == amount);
+        assertEquals(23, amount);
     }
 
     @Test

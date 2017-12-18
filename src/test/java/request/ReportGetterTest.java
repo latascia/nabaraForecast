@@ -10,6 +10,7 @@ import report.Report;
 
 
 import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -52,7 +53,7 @@ public class ReportGetterTest {
         try {
             given(requestHandler.getReport()).willThrow(new FailedToReceiveReportException());
             Report report = reporter.getReport();
-            assert(report instanceof FailReport);
+            assertTrue(report instanceof FailReport);
         } catch (FailedToReceiveReportException e) {
             e.printStackTrace();
         }
@@ -64,7 +65,7 @@ public class ReportGetterTest {
         try {
             when(requestHandler.getReport()).thenReturn(new FinalReport());
             Report report = reporter.getReport();
-            assert(report instanceof FinalReport);
+            assertTrue(report instanceof FinalReport);
         } catch (FailedToReceiveReportException e) {
             e.printStackTrace();
         }

@@ -17,7 +17,7 @@ public class OutputHandlerTest {
     @Test
     public void testConstructorGetRequestAsksForCityName() {
         Request request = mock(Request.class);
-        OutputHandler outputHandler = new OutputHandler(new FinalReport(), request);
+        new OutputHandler(new FinalReport(), request);
         verify(request).getCityName();
     }
 
